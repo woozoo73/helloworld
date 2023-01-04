@@ -8,4 +8,4 @@ build/
 .settings/
 .idea/
 
-!gradle-wrapper.jar
+/gradle/wrapper/gradle-wrapper.jar
