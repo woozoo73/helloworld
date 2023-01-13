@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
-import java.util.UUID;
-
 import static io.restassured.RestAssured.given;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -32,7 +30,7 @@ public class ApplicationTest {
         requestGreeting.setContent("Foo");
 
         String json = objectMapper.writeValueAsString(requestGreeting);
-        String key = "<" + UUID.randomUUID() + ">";
+        String key = EncryptUtils.generateKey();
         String value = EncryptUtils.encrypt(json, key);
 
         given().log().all()

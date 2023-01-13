@@ -6,6 +6,9 @@ import org.springframework.util.StreamUtils;
 
 import java.io.InputStream;
 
+/**
+ * 읽기를 가로챕니다.
+ */
 public class EncryptHttpInputMessage implements HttpInputMessage {
 
     private final HttpHeaders headers;
