@@ -9,7 +9,11 @@ public class GreetingController {
 
     @PostMapping("/greeting")
     public Greeting greeting(@RequestBody Greeting greeting) {
-        return greeting;
+        Greeting responseGreeting = new Greeting();
+        responseGreeting.setId(greeting.getId());
+        responseGreeting.setContent("Hi " + greeting.getContent());
+
+        return responseGreeting;
     }
 
 }
