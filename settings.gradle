@@ -1,2 +1,6 @@
 rootProject.name = 'helloworld'
 include 'hello-rest'
+include 'hello-gradle-task'
+include 'hello-gradle-plugin'
+include 'hello-message-converter'
+include 'hello-encrypt'
