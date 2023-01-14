@@ -22,9 +22,9 @@ import java.util.List;
  * 읽기와 쓰기를 가로채고, 실제 진지한 쓰기 구현은 MappingJackson2HttpMessageConverter 기본 구현을 따릅니다.
  * 다른 미디어 형식을 지원합니다.
  *
- * @see #read(Type, Class, HttpInputMessage) 
- * @see #writeInternal(Object, Type, HttpOutputMessage) 
- * @see #getSupportedMediaTypes()
+ * @see MappingJackson2HttpMessageConverter#read(Type, Class, HttpInputMessage)
+ * @see MappingJackson2HttpMessageConverter#writeInternal(Object, Type, HttpOutputMessage)
+ * @see MappingJackson2HttpMessageConverter#getSupportedMediaTypes()
  */
 public class EncryptJsonMessageConverter extends MappingJackson2HttpMessageConverter {
 
