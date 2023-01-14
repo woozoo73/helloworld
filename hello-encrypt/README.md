@@ -71,7 +71,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 
 * 아래와 같이 암호화된 Body 를 복호화하여 부모 converter 에 위임하는 형태로 읽기를 구현합니다.
 
-[ApplicationTest](src/main/java/foo/EncryptJsonMessageConverter.java)
+[EncryptJsonMessageConverter](src/main/java/foo/EncryptJsonMessageConverter.java)
 
 ```java
 /**
