@@ -1,9 +1,6 @@
 package foo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class GreetingController {
@@ -22,6 +19,19 @@ public class GreetingController {
         Greeting responseGreeting = new Greeting();
         responseGreeting.setId(0);
         responseGreeting.setContent("Hi all");
+
+        return responseGreeting;
+    }
+
+    @GetMapping("/nothing")
+    public void nothing() {
+    }
+
+    @GetMapping("/path-and-param/{path}")
+    public Greeting pathAndParam(@PathVariable String path, @RequestParam String param) {
+        Greeting responseGreeting = new Greeting();
+        responseGreeting.setId(0);
+        responseGreeting.setContent("Your path is " + path + ", and param is " + param);
 
         return responseGreeting;
     }

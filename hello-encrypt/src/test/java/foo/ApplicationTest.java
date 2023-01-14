@@ -51,4 +51,21 @@ public class ApplicationTest {
                 .statusCode(200);
     }
 
+    @Test
+    void getNothing() {
+        given().log().all()
+                .get("/nothing")
+                .then().log().all()
+                .statusCode(200);
+    }
+
+    @Test
+    void getPathAndParam() {
+        given().log().all()
+                .param("param", "bar")
+                .get("/path-and-param/" + "foo")
+                .then().log().all()
+                .statusCode(200);
+    }
+
 }
