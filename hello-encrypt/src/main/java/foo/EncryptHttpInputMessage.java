@@ -7,7 +7,7 @@ import org.springframework.util.StreamUtils;
 import java.io.InputStream;
 
 /**
- * 읽기를 가로챕니다.
+ * 읽기를 가로채기 위해 대신 전달합니다.
  */
 public class EncryptHttpInputMessage implements HttpInputMessage {
 

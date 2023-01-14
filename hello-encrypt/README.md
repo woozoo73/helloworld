@@ -72,6 +72,8 @@ public class WebConfiguration implements WebMvcConfigurer {
  * 읽기와 쓰기를 가로채고, 실제 진지한 쓰기 구현은 MappingJackson2HttpMessageConverter 기본 구현을 따릅니다.
  * 다른 미디어 형식을 지원합니다.
  *
+ * @see #read(Type, Class, HttpInputMessage)
+ * @see #writeInternal(Object, Type, HttpOutputMessage)
  * @see #getSupportedMediaTypes()
  */
 public class EncryptJsonMessageConverter extends MappingJackson2HttpMessageConverter {
@@ -87,6 +89,7 @@ public class EncryptJsonMessageConverter extends MappingJackson2HttpMessageConve
         String decrypted = decrypt();
         HttpInputMessage decryptedMessage = new EncryptHttpInputMessage(inputMessage.getHeaders(), new ByteArrayInputStream(decrypted.getBytes(StandardCharsets.UTF_8)));
 
+        // 읽기 동작을 위임합니다.
         return super.read(type, contextClass, decryptedMessage);
     }
 
@@ -229,8 +232,6 @@ Keep-Alive: timeout=60
 Connection: keep-alive
 
 value=<80b1af38-086a-4418-b938-0f59c02ac267>{"id":7,"content":"Hi Foo"}<80b1af38-086a-4418-b938-0f59c02ac267>&key=<80b1af38-086a-4418-b938-0f59c02ac267>
-
-Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
 
 ...
 
