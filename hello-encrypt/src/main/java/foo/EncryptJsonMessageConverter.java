@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 읽기와 쓰기를 가로채고, 실제 진지한 쓰기 구현은 MappingJackson2HttpMessageConverter 기본 구현을 따릅니다.
+ * 읽기와 쓰기를 가로채고, 실제 진지한 읽기 및 쓰기 구현은 MappingJackson2HttpMessageConverter 기본 구현을 따릅니다.
  * 다른 미디어 형식을 지원합니다.
  *
  * @see MappingJackson2HttpMessageConverter#read(Type, Class, HttpInputMessage)

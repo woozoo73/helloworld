@@ -69,12 +69,12 @@ public class WebConfiguration implements WebMvcConfigurer {
 
 ```java
 /**
- * 읽기와 쓰기를 가로채고, 실제 진지한 쓰기 구현은 MappingJackson2HttpMessageConverter 기본 구현을 따릅니다.
+ * 읽기와 쓰기를 가로채고, 실제 진지한 읽기 및 쓰기 구현은 MappingJackson2HttpMessageConverter 기본 구현을 따릅니다.
  * 다른 미디어 형식을 지원합니다.
  *
- * @see #read(Type, Class, HttpInputMessage)
- * @see #writeInternal(Object, Type, HttpOutputMessage)
- * @see #getSupportedMediaTypes()
+ * @see MappingJackson2HttpMessageConverter#read(Type, Class, HttpInputMessage)
+ * @see MappingJackson2HttpMessageConverter#writeInternal(Object, Type, HttpOutputMessage)
+ * @see MappingJackson2HttpMessageConverter#getSupportedMediaTypes()
  */
 public class EncryptJsonMessageConverter extends MappingJackson2HttpMessageConverter {
 
@@ -84,7 +84,7 @@ public class EncryptJsonMessageConverter extends MappingJackson2HttpMessageConve
             return super.read(type, contextClass, inputMessage);
         }
 
-        // 요청 스트림(request body)을 바로 읽으면, 규격이 안 맞기 때문에, 가로챈 다음 규격에 맞는 요청 스트림의 내용으로 바꿉니다.
+        // 요청 스트림(request body)을 바로 읽으면, 규격이 안 맞기 때문에, 일단 가로챈 다음, 규격에 맞는 요청 스트림의 내용으로 바꿉니다.
         // 암호화된 JSON & 키 --> 평문 JSON
         String decrypted = decrypt();
         HttpInputMessage decryptedMessage = new EncryptHttpInputMessage(inputMessage.getHeaders(), new ByteArrayInputStream(decrypted.getBytes(StandardCharsets.UTF_8)));
