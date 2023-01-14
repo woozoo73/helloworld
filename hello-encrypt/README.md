@@ -2,18 +2,27 @@
 
 * 요청은 아래와 같이 Body 에 value, key 파라미터로 전송된다고 가정합니다.
 
-```http request
+```
 POST /greeting HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
 
 value=<ENC>{"id": 1, "content": "bar"}<ENC>&key=<ENC>
 ```
 
-```http request
+```
 POST /greeting HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
 
 value=<FOO>{"id": 1, "content": "bar"}<FOO>&key=<FOO>
+```
+
+* 응답은 아래와 같이 Body 에 value, key 파라미터로 전송된다고 가정합니다.
+
+```
+HTTP/1.1 200
+Content-Type: application/x-www-form-urlencoded
+
+value=<BAR>{"id": 1, "content": "bar"}<BAR>&key=<BAR>
 ```
 
 * Controller 규격은 아래와 같다고 가정합니다.
@@ -39,9 +48,9 @@ public class GreetingController {
 * 더미 구현에서는 key 값 문자열에 해당하는 암호화된 원문을 지우는 것으로 복호화합니다.
 * 즉 위의 요청들은 일반적(정상적?)으로 아래 요청과 같습니다.
 
-```http request
+```http
 POST /greeting HTTP/1.1
-Content-Type: application/json
+Content-Type: application/json; charset=UTF-8
 
 {"id": 1, "content": "bar"}
 ```
