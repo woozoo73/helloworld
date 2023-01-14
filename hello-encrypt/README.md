@@ -18,6 +18,8 @@ value=<FOO>{"id": 1, "content": "bar"}<FOO>&key=<FOO>
 
 * Controller 규격은 아래와 같다고 가정합니다.
 
+[GreetingController](src/main/java/foo/GreetingController.java)
+
 ```java
 @RestController
 public class GreetingController {
@@ -46,6 +48,8 @@ Content-Type: application/json
 
 `Content-Type` `application/x-www-form-urlencoded` 을 Json message converter 가 지원하기 위해
 
+[WebConfiguration](src/main/java/foo/WebConfiguration.java)
+
 ```java
 @Configuration
 public class WebConfiguration implements WebMvcConfigurer {
@@ -66,6 +70,8 @@ public class WebConfiguration implements WebMvcConfigurer {
 ```
 
 * 아래와 같이 암호화된 Body 를 복호화하여 부모 converter 에 위임하는 형태로 읽기를 구현합니다.
+
+[ApplicationTest](src/main/java/foo/EncryptJsonMessageConverter.java)
 
 ```java
 /**
@@ -159,6 +165,8 @@ public class EncryptJsonMessageConverter extends MappingJackson2HttpMessageConve
 ```
 
 * ApplicationTest 를 통해 테스트를 수행할 수 있습니다.
+
+[ApplicationTest](src/test/java/foo/ApplicationTest.java)
 
 ```java
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
