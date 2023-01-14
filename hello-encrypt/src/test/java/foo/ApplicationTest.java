@@ -1,5 +1,6 @@
 package foo;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -24,7 +25,7 @@ public class ApplicationTest {
     }
 
     @Test
-    void postGreeting() throws Exception {
+    void postGreeting() throws JsonProcessingException {
         Greeting requestGreeting = new Greeting();
         requestGreeting.setId(7);
         requestGreeting.setContent("Foo");
@@ -38,6 +39,14 @@ public class ApplicationTest {
                 .formParam("value", value)
                 .formParam("key", key)
                 .post("/greeting")
+                .then().log().all()
+                .statusCode(200);
+    }
+
+    @Test
+    void getGreeting() {
+        given().log().all()
+                .get("/greeting")
                 .then().log().all()
                 .statusCode(200);
     }
