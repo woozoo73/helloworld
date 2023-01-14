@@ -46,6 +46,7 @@ public class ApplicationTest {
     @Test
     void getGreeting() {
         given().log().all()
+                .when().contentType(ContentType.URLENC)
                 .get("/greeting")
                 .then().log().all()
                 .statusCode(200);
@@ -54,6 +55,7 @@ public class ApplicationTest {
     @Test
     void getNothing() {
         given().log().all()
+                .when().contentType(ContentType.URLENC)
                 .get("/nothing")
                 .then().log().all()
                 .statusCode(200);
@@ -62,6 +64,7 @@ public class ApplicationTest {
     @Test
     void getPathAndParam() {
         given().log().all()
+                .when().contentType(ContentType.URLENC)
                 .param("param", "bar")
                 .get("/path-and-param/" + "foo")
                 .then().log().all()
