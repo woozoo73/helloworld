@@ -34,7 +34,7 @@ public class EncryptJsonMessageConverter extends MappingJackson2HttpMessageConve
             return super.read(type, contextClass, inputMessage);
         }
 
-        // 요청 스트림(request body)을 바로 읽으면, 규격이 안 맞기 때문에, 가로챈 다음 규격에 맞는 요청 스트림의 내용으로 바꿉니다.
+        // 요청 스트림(request body)을 바로 읽으면, 규격이 안 맞기 때문에, 일단 가로챈 다음, 규격에 맞는 요청 스트림의 내용으로 바꿉니다.
         // 암호화된 JSON & 키 --> 평문 JSON
         String decrypted = decrypt();
         HttpInputMessage decryptedMessage = new EncryptHttpInputMessage(inputMessage.getHeaders(), new ByteArrayInputStream(decrypted.getBytes(StandardCharsets.UTF_8)));
