@@ -213,38 +213,45 @@ public class ApplicationTest {
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.1)
 
+2023-01-14 09:47:16.696  INFO 24440 --- [    Test worker] foo.ApplicationTest                      : Starting ApplicationTest using Java 1.8.0_311 on LAPTOP-3LP8SRUD with PID 24440 (started by woozo in C:\Users\woozo\git\helloworld\hello-encrypt)
+2023-01-14 09:47:16.697  INFO 24440 --- [    Test worker] foo.ApplicationTest                      : No active profile set, falling back to 1 default profile: "default"
+2023-01-14 09:47:18.175  INFO 24440 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2023-01-14 09:47:18.188  INFO 24440 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-01-14 09:47:18.188  INFO 24440 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.64]
+2023-01-14 09:47:18.350  INFO 24440 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-01-14 09:47:18.351  INFO 24440 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1437 ms
+2023-01-14 09:47:19.394  INFO 24440 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-01-14 09:47:21.493  INFO 24440 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 59237 (http) with context path ''
+2023-01-14 09:47:21.504  INFO 24440 --- [    Test worker] foo.ApplicationTest                      : Started ApplicationTest in 5.1 seconds (JVM running for 8.271)
+
 ...
 
-2023-01-14 08:06:47.823  INFO 18204 --- [    Test worker] foo.ApplicationTest                      : Started ApplicationTest in 5.121 seconds (JVM running for 8.31)
 Request method:	POST
-Request URI:	http://localhost:58198/greeting
+Request URI:	http://localhost:59237/greeting
 Proxy:			<none>
 Request params:	<none>
 Query params:	<none>
-Form params:	value=<902683d8-1569-45be-91d1-b2a3b2250682>{"id":7,"content":"Foo"}<902683d8-1569-45be-91d1-b2a3b2250682>
-				key=<902683d8-1569-45be-91d1-b2a3b2250682>
+Form params:	value=<eccc86ef-392c-40f6-840f-b387453955e0>{"id":7,"content":"Foo"}<eccc86ef-392c-40f6-840f-b387453955e0>
+				key=<eccc86ef-392c-40f6-840f-b387453955e0>
 Path params:	<none>
 Headers:		Accept=*/*
-				Content-Type=application/x-www-form-urlencoded; charset=ISO-8859-1
+				Content-Type=application/x-www-form-urlencoded; charset=UTF-8
 Cookies:		<none>
 Multiparts:		<none>
 Body:			<none>
-
-...
-
 HTTP/1.1 200 
 Content-Type: application/x-www-form-urlencoded
 Transfer-Encoding: chunked
-Date: Fri, 13 Jan 2023 23:06:49 GMT
+Date: Sat, 14 Jan 2023 00:47:22 GMT
 Keep-Alive: timeout=60
 Connection: keep-alive
 
-value=<80b1af38-086a-4418-b938-0f59c02ac267>{"id":7,"content":"Hi Foo"}<80b1af38-086a-4418-b938-0f59c02ac267>&key=<80b1af38-086a-4418-b938-0f59c02ac267>
+value=<7d9bb1e5-5e3a-4f7a-9ef0-0ca8f8cff110>{"id":7,"content":"Hi Foo"}<7d9bb1e5-5e3a-4f7a-9ef0-0ca8f8cff110>&key=<7d9bb1e5-5e3a-4f7a-9ef0-0ca8f8cff110>
 
 ...
 
 BUILD SUCCESSFUL in 13s
-...
+
 ```
 
 * PostMan 에서는 아래와 같이 요청합니다.
