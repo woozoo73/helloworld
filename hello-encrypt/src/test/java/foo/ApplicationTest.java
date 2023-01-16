@@ -74,4 +74,15 @@ public class ApplicationTest {
                 .statusCode(200);
     }
 
+    @Test
+    void postForm() {
+        given().log().all()
+                .when().contentType(ContentType.URLENC)
+                .param("id", "9")
+                .param("content", "form-value")
+                .post("/form/")
+                .then().log().all()
+                .statusCode(200);
+    }
+
 }

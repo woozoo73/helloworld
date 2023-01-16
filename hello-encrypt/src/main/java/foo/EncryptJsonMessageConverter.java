@@ -105,4 +105,52 @@ public class EncryptJsonMessageConverter extends MappingJackson2HttpMessageConve
         return appendedTypes;
     }
 
+    /**
+     * 읽기 처리를 해야 하는지(할 수 있는지) 검사합니다.
+     *
+     * @param clazz     읽기 대상 클래스.
+     * @param mediaType 미디어 형식.
+     * @return 읽기 처리를 할 수 있는지 여부.
+     */
+    @Override
+    public boolean canRead(Class<?> clazz, @Nullable MediaType mediaType) {
+        if (!super.canRead(clazz, mediaType)) {
+            return false;
+        }
+
+        return isEncryptRequest();
+    }
+
+    /**
+     * 쓰기 처리를 해야 하는지(할 수 있는지) 검사합니다.
+     *
+     * @param clazz     쓰기 대상 클래스.
+     * @param mediaType 미디어 형식.
+     * @return 쓰기 처리를 할 수 있는지 여부.
+     */
+    @Override
+    public boolean canWrite(Class<?> clazz, @Nullable MediaType mediaType) {
+        if (!super.canWrite(clazz, mediaType)) {
+            return false;
+        }
+
+        return isEncryptRequest();
+    }
+
+    /**
+     * 암화화된 요청인지 판단합니다.
+     *
+     * @return 암호화된 요청인지 여부.
+     */
+    private boolean isEncryptRequest() {
+        // 요청 정보를 얻습니다.
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        // 요청 파라미터를 통해 암호화된 JSON 과 키를 얻습니다.
+        // application/x-www-form-urlencoded 이기 때문에 요청 파라미터를 통해 이들을 얻을 수 있습니다.
+        String value = request.getParameter("p");
+        String key = request.getParameter("q");
+
+        return value != null && key != null;
+    }
+
 }
