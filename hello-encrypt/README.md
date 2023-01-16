@@ -6,14 +6,14 @@
 POST /greeting HTTP/1.1
 Content-Type: application/x-www-form-urlencoded; charset=UTF-8
 
-value=<ENC>{"id": 1, "content": "bar"}<ENC>&key=<ENC>
+p=<ENC>{"id": 1, "content": "bar"}<ENC>&q=<ENC>
 ```
 
 ```
 POST /greeting HTTP/1.1
 Content-Type: application/x-www-form-urlencoded; charset=UTF-8
 
-value=<FOO>{"id": 1, "content": "bar"}<FOO>&key=<FOO>
+p=<FOO>{"id": 1, "content": "bar"}<FOO>&q=<FOO>
 ```
 
 * 응답은 아래와 같이 Body 에 value, key 파라미터로 전송된다고 가정합니다.
@@ -22,7 +22,7 @@ value=<FOO>{"id": 1, "content": "bar"}<FOO>&key=<FOO>
 HTTP/1.1 200
 Content-Type: application/x-www-form-urlencoded
 
-value=<BAR>{"id": 1, "content": "bar"}<BAR>&key=<BAR>
+p=<BAR>{"id": 1, "content": "bar"}<BAR>&q=<BAR>
 ```
 
 * Controller 규격은 아래와 같다고 가정합니다.
@@ -240,8 +240,8 @@ Request URI:	http://localhost:59237/greeting
 Proxy:			<none>
 Request params:	<none>
 Query params:	<none>
-Form params:	value=<eccc86ef-392c-40f6-840f-b387453955e0>{"id":7,"content":"Foo"}<eccc86ef-392c-40f6-840f-b387453955e0>
-				key=<eccc86ef-392c-40f6-840f-b387453955e0>
+Form params:	p=<eccc86ef-392c-40f6-840f-b387453955e0>{"id":7,"content":"Foo"}<eccc86ef-392c-40f6-840f-b387453955e0>
+				q=<eccc86ef-392c-40f6-840f-b387453955e0>
 Path params:	<none>
 Headers:		Accept=*/*
 				Content-Type=application/x-www-form-urlencoded; charset=UTF-8
@@ -255,7 +255,7 @@ Date: Sat, 14 Jan 2023 00:47:22 GMT
 Keep-Alive: timeout=60
 Connection: keep-alive
 
-value=<7d9bb1e5-5e3a-4f7a-9ef0-0ca8f8cff110>{"id":7,"content":"Hi Foo"}<7d9bb1e5-5e3a-4f7a-9ef0-0ca8f8cff110>&key=<7d9bb1e5-5e3a-4f7a-9ef0-0ca8f8cff110>
+p=<7d9bb1e5-5e3a-4f7a-9ef0-0ca8f8cff110>{"id":7,"content":"Hi Foo"}<7d9bb1e5-5e3a-4f7a-9ef0-0ca8f8cff110>&q=<7d9bb1e5-5e3a-4f7a-9ef0-0ca8f8cff110>
 
 ...
 

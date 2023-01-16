@@ -72,8 +72,8 @@ public class EncryptJsonMessageConverter extends MappingJackson2HttpMessageConve
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         // 요청 파라미터를 통해 암호화된 JSON 과 키를 얻습니다.
         // application/x-www-form-urlencoded 이기 때문에 요청 파라미터를 통해 이들을 얻을 수 있습니다.
-        String value = request.getParameter("value");
-        String key = request.getParameter("key");
+        String value = request.getParameter("p");
+        String key = request.getParameter("q");
 
         return EncryptUtils.decrypt(value, key);
     }

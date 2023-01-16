@@ -39,8 +39,8 @@ public class ApplicationTest {
 
         given().log().all()
                 .when().contentType(ContentType.URLENC)
-                .formParam("value", value)
-                .formParam("key", key)
+                .formParam("p", value)
+                .formParam("q", key)
                 .post("/greeting")
                 .then().log().all()
                 .statusCode(200);

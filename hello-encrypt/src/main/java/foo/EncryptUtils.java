@@ -20,7 +20,7 @@ public abstract class EncryptUtils {
     }
 
     public static String valueAndKey(String source, String key) {
-        return "value=" + encrypt(source, key) + "&key=" + key;
+        return "p=" + encrypt(source, key) + "&q=" + key;
     }
 
 }
