@@ -1,18 +1,30 @@
 plugins {
     id 'groovy'
     id 'java-gradle-plugin'
+    id 'maven-publish'
 }
 
-group = 'com.mycompany'
+group = 'com.woozooha'
 version = '0.0.1-SNAPSHOT'
 
 repositories {
+    mavenLocal()
     mavenCentral()
-    jcenter()
 }
 
 dependencies {
-    testImplementation('org.spockframework:spock-core:2.4-M1-groovy-3.0') {
-        exclude module: 'groovy-all'
+    testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
+}
+
+gradlePlugin {
+    plugins {
+        fileDiff {
+            id = 'com.woozooha.hello-gradle-plugin'
+            implementationClass = 'foo.FileDiffPlugin'
+        }
     }
+}
+
+test {
+    useJUnitPlatform()
 }

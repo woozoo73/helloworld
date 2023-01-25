@@ -1,15 +1,16 @@
+package foo
+
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
 class FileDiffPlugin implements Plugin<Project> {
-
     @Override
     void apply(Project project) {
         project.extensions.create('fileDiff', FileDiffExtension)
 
-        project.task.create('fileDiff', FileDiffTask) {
+        project.tasks.register('fileDiff', FileDiffTask) {
             file1 = project.fileDiff.file1
+            file2 = project.fileDiff.file2
         }
     }
-
 }
