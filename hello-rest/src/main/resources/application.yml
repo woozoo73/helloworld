@@ -3,6 +3,18 @@ management:
     web:
       exposure:
         include: "*"
+  endpoint:
+    health:
+      show-details: always
   info:
     git:
       mode: "full"
+spring:
+  boot:
+    admin:
+      client:
+        instance:
+          service-url: http://localhost:8080
+        url: http://localhost:9080
+  application:
+    name: hello-rest

@@ -1,7 +1,6 @@
 plugins {
     id 'org.springframework.boot' version '2.7.1'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'com.gorylenko.gradle-git-properties' version '2.3.2'
     id 'java'
 }
 
@@ -13,11 +12,10 @@ repositories {
 }
 
 dependencies {
+    implementation 'de.codecentric:spring-boot-admin-starter-server:2.7.1'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'io.rest-assured:rest-assured'
-    implementation 'io.jenkins.blueocean:blueocean-rest:1.27.1'
 }
 
 test {
